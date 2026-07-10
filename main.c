@@ -28,11 +28,11 @@
 #define TASKBAR_HEIGHT 48
 
 // easier to just do it here instead of rewriting the metadata for the files in my library
-void Ye(char *str) {
+void Ye(char* str) {
     const char *old_template = "Kanye West";
     const char *new_template = "Ye";
 
-    char *pos;
+    char* pos;
     while ((pos = strstr(str, old_template)) != NULL)
     {
         size_t old_len = strlen(old_template);
