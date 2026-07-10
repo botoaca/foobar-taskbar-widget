@@ -58,7 +58,7 @@ int main() {
     char np2_buffer[FOO_NOWPLAYING2_BUFSIZE];
    
     SetConfigFlags(FLAG_WINDOW_UNDECORATED | FLAG_WINDOW_TRANSPARENT | FLAG_WINDOW_MOUSE_PASSTHROUGH);
-    InitWindow(windowWidth, windowHeight, "foobar-widget");
+    InitWindow(windowWidth, windowHeight, "foobar-taskbar-widget");
     
     HWND hwnd = GetWindowHandle();
     ShowWindow(hwnd, SW_HIDE);
