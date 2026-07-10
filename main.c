@@ -29,8 +29,8 @@
 
 // easier to just do it here instead of rewriting the metadata for the files in my library
 void Ye(char* str) {
-    const char *old_template = "Kanye West";
-    const char *new_template = "Ye";
+    const char* old_template = "Kanye West";
+    const char* new_template = "Ye";
 
     char* pos;
     while ((pos = strstr(str, old_template)) != NULL)
