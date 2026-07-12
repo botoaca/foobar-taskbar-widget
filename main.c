@@ -27,6 +27,13 @@
 
 #define TASKBAR_HEIGHT 48
 
+void hide_console_if_not_cmdline() {
+    if (GetConsoleWindow() == NULL) return;
+    DWORD processes[2];
+    DWORD count = GetConsoleProcessList(processes, 2);
+    if (count == 1) FreeConsole();
+}
+
 // easier to just do it here instead of rewriting the metadata for the files in my library
 void Ye(char* str) {
     const char* old_template = "Kanye West";
@@ -44,6 +51,8 @@ void Ye(char* str) {
 }
 
 int main() {
+    hide_console_if_not_cmdline();
+    
     const int windowWidth = 600;
     const int windowHeight = TASKBAR_HEIGHT;
     
