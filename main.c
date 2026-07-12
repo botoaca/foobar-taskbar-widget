@@ -61,9 +61,16 @@ int main() {
     InitWindow(windowWidth, windowHeight, "foobar-taskbar-widget");
     
     HWND hwnd = GetWindowHandle();
+    
     ShowWindow(hwnd, SW_HIDE);
-    SetWindowLong(hwnd, GWL_EXSTYLE, GetWindowLong(hwnd, GWL_EXSTYLE) | WS_EX_TOOLWINDOW | WS_EX_NOACTIVATE);
+
+    LONG_PTR exStyle = GetWindowLongPtr(hwnd, GWL_EXSTYLE);
+    exStyle &= ~WS_EX_APPWINDOW;
+    exStyle |= WS_EX_TOOLWINDOW | WS_EX_NOACTIVATE;
+    SetWindowLongPtr(hwnd, GWL_EXSTYLE, exStyle);
+    SetWindowPos(hwnd, HWND_TOPMOST, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE | SWP_NOACTIVATE | SWP_FRAMECHANGED);
     ShowWindow(hwnd, SW_SHOW);
+    
     SetWindowPos(hwnd, HWND_TOPMOST, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE | SWP_NOACTIVATE);
     SetWindowPosition(0, GetMonitorHeight(GetCurrentMonitor()) - TASKBAR_HEIGHT);
     
@@ -87,7 +94,7 @@ int main() {
     SetTargetFPS(60);
     while (!WindowShouldClose())
     {
-        SetWindowPos(hwnd, HWND_TOPMOST, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE | SWP_NOACTIVATE);
+        SetWindowPos(hwnd, HWND_TOPMOST, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE | SWP_NOACTIVATE | SWP_FRAMECHANGED);
         
         rewind(np2_file);
         np2_bytes_read = fread(np2_buffer, 1, sizeof(np2_buffer) - 1, np2_file);
