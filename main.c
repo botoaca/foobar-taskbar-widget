@@ -100,7 +100,7 @@ int main() {
     
     Vector2 textMeasurement = MeasureTextEx(font, "Placeholder\nPlaceholder", fontSize, fontSpacing);
 
-    SetTargetFPS(60);
+    SetTargetFPS(5);
     while (!WindowShouldClose())
     {
         SetWindowPos(hwnd, HWND_TOPMOST, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE | SWP_NOACTIVATE | SWP_FRAMECHANGED);
